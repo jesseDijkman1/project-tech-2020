@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<%- include("setup/head") %>
 
-    <link rel="stylesheet" href="css/main.css">
-  </head>
+<h1><%= head.title %></h1>
 
-  <body>
-    <%- include("layout/header"), page %>
+<% if (account) { %>
+  <% account.matches.forEach(function(match){ %>
+    <a href="/chat/<%= match.id %>">
+      <h3><%= match.name %></h3>
+    </a>
+  <% }) %>
+<% } %>
 
-
-
-    <%- include("layout/footer") %>
-    <script src="js/main.js"></script>
-  </body>
-</html>
+<%- include("setup/footer") %>
