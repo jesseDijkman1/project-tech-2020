@@ -36,13 +36,13 @@ app.get("/", (req, res) => {
 })
 
 app.get("/chat/:match_id", (req, res, next) => {
-  const matchId = parseInt(req.params.match_id)
-
-  if (isNaN(matchId)) return next()
+  const matchId = parseInt(req.params.match_id) // For now use numbers as id
 
   const matchData = test_account_data.matches.find(
     (match) => match.id == matchId
   )
+
+  if (!matchData) return next()
 
   res.render("chat.ejs", {
     head: {
